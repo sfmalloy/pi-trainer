@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pi-trainer/static/css/main.12bd0ea5.css",
+    "main.js": "/pi-trainer/static/js/main.664ceb0a.js",
+    "index.html": "/pi-trainer/index.html",
+    "main.12bd0ea5.css.map": "/pi-trainer/static/css/main.12bd0ea5.css.map",
+    "main.664ceb0a.js.map": "/pi-trainer/static/js/main.664ceb0a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.12bd0ea5.css",
+    "static/js/main.664ceb0a.js"
+  ]
+}
