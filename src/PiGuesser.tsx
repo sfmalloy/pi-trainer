@@ -72,6 +72,7 @@ export function PiGuesser(props: any) {
   let [typing, setTyping] = useState(false);
   let [enableInput, setEnableInput] = useState(false);
   let [resetting, setResetting] = useState(false);
+  let [sharing, setSharing] = useState(false);
 
   if (!typing && !resetting) {
     typePi(N, setAnswer, setTyping, setEnableInput);
@@ -81,8 +82,29 @@ export function PiGuesser(props: any) {
 
   return (
     <div>
-      <h1>π Trainer</h1>
-      <h1 style={{margin: 0, fontSize: '36px'}}>High Score: {highScore}</h1>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <h1>π Trainer</h1>
+        <h1 style={{margin: 0, fontSize: '36px'}}>High Score: {highScore}</h1>
+        <button 
+              type="button"
+              onClick={async () => { 
+                navigator.clipboard.writeText(`🥧 Trainer Score: ${highScore}\n(https://sfmalloy.github.io/pi-trainer)`);
+                setSharing(true);
+                await delay(2000);
+                setSharing(false);
+              }}
+              style={{marginTop: '8px'}}
+        >Share Score</button>
+        <p style={{position:'absolute', margin: '256px 0 0 0', fontSize:'24px'}}>{sharing ? 'High score copied to clipboard.' : ''}</p>
+      </div>
+      
       <div>
         <h2>Try to guess the first <span className='bright'>{N === 1 ? '' : N}</span> digit{N === 1 ? '' : 's'} of π</h2>
         <form
