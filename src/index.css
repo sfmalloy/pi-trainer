@@ -1,13 +1,65 @@
-body {
+body, input[type=text], button {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Source Code Pro';
+  background-color: #bf883f;
+  color: #eccc91;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+input[type=text], button {
+  border: 0;
+  background-color: #5e431f;
+  font-size: 24px;
+  margin-right: 8px;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+button:hover, input:hover {
+  background-color: #9c7036;
+  transition: background-color 0.15s;
+}
+
+button:hover, input:focus {
+  background-color: #9c7036;
+}
+
+.center {
+  position: relative;
+}
+
+input:focus {
+  outline: none;
+}
+
+h1 {
+  font-size: 64px;
+  text-align: center;
+  margin-bottom: 0;
+  color: #30230a;
+}
+
+h2 {
+  color: #5e431f;
+  text-align: center;
+  font-size: 24px;
+  margin: 40px 0 12px 0;
+}
+
+input::placeholder {
+  color: #e6a550;
+}
+
+.bright {
+  color: #eccc91;
+  font-size: 30px;
+}
+
+p {
+  font-size: 32px;
+  color: #30230a;
+  text-align: center; 
 }
