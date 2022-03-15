@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/pi-trainer/static/css/main.12bd0ea5.css",
-    "main.js": "/pi-trainer/static/js/main.171b07e6.js",
+    "main.css": "/pi-trainer/static/css/main.b413e0cd.css",
+    "main.js": "/pi-trainer/static/js/main.48abbdde.js",
     "index.html": "/pi-trainer/index.html",
-    "main.12bd0ea5.css.map": "/pi-trainer/static/css/main.12bd0ea5.css.map",
-    "main.171b07e6.js.map": "/pi-trainer/static/js/main.171b07e6.js.map"
+    "main.b413e0cd.css.map": "/pi-trainer/static/css/main.b413e0cd.css.map",
+    "main.48abbdde.js.map": "/pi-trainer/static/js/main.48abbdde.js.map"
   },
   "entrypoints": [
-    "static/css/main.12bd0ea5.css",
-    "static/js/main.171b07e6.js"
+    "static/css/main.b413e0cd.css",
+    "static/js/main.48abbdde.js"
   ]
 }
