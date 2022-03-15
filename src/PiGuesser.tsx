@@ -32,7 +32,7 @@ async function typePi(
   let ans = '3';
   let ms = 250
   setAnswer(ans);
-  await delay(ms);
+  await delay(highScore === 0 && N === 1 ? 4 * ms : ms);
   if (N > 1) {
     ans = ans.concat('.');
     setAnswer(ans);
@@ -44,7 +44,7 @@ async function typePi(
       await delay(ms);
     }
   }
-  await delay(ms * 4);
+  await delay(ms * 8);
   setAnswer('');
   setEnableInput(true);
 }
@@ -125,7 +125,14 @@ export function PiGuesser(props: any) {
             }
           }}
         >
-          <input onChange={(e) => setGuess(e.target.value)} disabled={!enableInput} maxLength={N === 1 ? N : N + 1} id='guess' type={'text'} placeholder={'Guess π...'}></input>
+          <input 
+            onChange={(e) => setGuess(e.target.value)} 
+            disabled={!enableInput} 
+            maxLength={N === 1 ? N : N + 1} 
+            id='guess' 
+            type={'text'} 
+            placeholder={'Guess π...'}
+          ></input>
           <button type="submit" disabled={!enableInput}>Submit</button>
           <button 
             type="button"
