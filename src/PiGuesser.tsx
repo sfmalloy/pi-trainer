@@ -1,5 +1,4 @@
 import { CSSProperties, Dispatch, SetStateAction, useState } from "react"
-import { readFileSync } from 'fs';
 
 const centered: CSSProperties = {
   display: 'flex',
@@ -52,10 +51,11 @@ async function typePi(
 async function typeReset(
   N: number,
   gotWrong: boolean,
+  guess: string,
   setResetting: BoolSetState, 
   setTyping: BoolSetState,
   setAnswer: StringSetState,
-  setN: NumberSetState
+  setN: NumberSetState,
 ) {
   highScore = Math.max(highScore, N-1);
   setResetting(false);
@@ -73,11 +73,14 @@ export function PiGuesser(props: any) {
   let [enableInput, setEnableInput] = useState(false);
   let [resetting, setResetting] = useState(false);
   let [sharing, setSharing] = useState(false);
+  let [digitCount, setDigitCount] = useState(0);
 
   if (!typing && !resetting) {
     typePi(N, setAnswer, setTyping, setEnableInput);
+    setDigitCount(0);
   } else if (resetting) {
-    typeReset(N, true, setResetting, setTyping, setAnswer, setN);
+    typeReset(N, true, guess, setResetting, setTyping, setAnswer, setN);
+    setDigitCount(0);
   }
 
   return (
@@ -102,11 +105,19 @@ export function PiGuesser(props: any) {
               }}
               style={{marginTop: '8px'}}
         >Share Score</button>
-        <p style={{position:'absolute', margin: '256px 0 0 0', fontSize:'24px'}}>{sharing ? 'High score copied to clipboard.' : ''}</p>
+        <p 
+          style={{
+            position:'absolute', 
+            margin: '256px 0 0 0',
+            fontSize:'24px'
+          }}
+        >
+          {sharing ? 'High score copied to clipboard.' : ''}
+        </p>
       </div>
-      
+
       <div>
-        <h2>Try to guess the first <span className='bright'>{N === 1 ? '' : N}</span> digit{N === 1 ? '' : 's'} of π</h2>
+        <h2>Try to guess the first <span className='bright'>{N === 1 ? '' : N}</span> digit{N === 1 ? '' : 's'} of π (including the decimal point!)</h2>
         <form
           style={centered}
           autoComplete='off'
@@ -125,8 +136,12 @@ export function PiGuesser(props: any) {
             }
           }}
         >
+          <label style={{marginRight: '8px', fontSize: '24px', color: '#30230a'}} htmlFor='guess'>{digitCount} / {N}</label>
           <input 
-            onChange={(e) => setGuess(e.target.value)} 
+            onChange={(e) => {
+              setGuess(e.target.value);
+              setDigitCount(e.target.value.length > 1 && e.target.value[1] === '.' ? e.target.value.length - 1 : e.target.value.length)
+            }} 
             disabled={!enableInput} 
             maxLength={N === 1 ? N : N + 1} 
             id='guess' 
@@ -141,8 +156,8 @@ export function PiGuesser(props: any) {
               if (guessElem) {
                 guessElem.value = '';
               }
-
-              typeReset(N, false, setResetting, setTyping, setAnswer, setN);
+              
+              typeReset(N, false, guess, setResetting, setTyping, setAnswer, setN);
             }}
           >Reset</button>
         </form>

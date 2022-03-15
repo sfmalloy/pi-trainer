@@ -7,8 +7,6 @@ body, input[type=text], button {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 input[type=text], button {
   border: 0;
   background-color: #5e431f;
@@ -54,7 +52,7 @@ input::placeholder {
 }
 
 .bright {
-  color: #eccc91;
+  color: #fce3b6;
   font-size: 30px;
 }
 
